@@ -46,7 +46,14 @@ function IngestTms () {
    *
    * @param  {function} cb - lookup tables returned
    */
-  this.asyncAll = require(`${__dirname}/lib/loadlookup`).asyncAll
+  this.asyncAllLookup = require(`${__dirname}/lib/loadlookup`).asyncAllLookup
+
+  /**
+   * The main ingest method
+   *
+   * @param  {function} cb - nothing returned
+   */
+  this.tmsObjectsIngest = require(`${__dirname}/lib/objects`).tmsObjectsIngest
 
 /**
  * Ingest the Archives components

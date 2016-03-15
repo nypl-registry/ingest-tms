@@ -1,6 +1,8 @@
+/* global describe, it */
+
 'use strict'
-var assert = require('assert')
-var should = require('should')
+var assert = require('assert') // eslint-disable-line
+var should = require('should') // eslint-disable-line
 var tmsUtils = require('../lib/utils.js')
 
 describe('tmsUtils', function () {
@@ -28,5 +30,13 @@ describe('tmsUtils', function () {
     var r = tmsUtils.mapObjConXrefCsvToJson(data)
     r.ObjectID.should.equal('119898')
     r.Role.should.equal('Photographer')
+  })
+
+  it('should parse tmsObjects row results into mapped obj', function () {
+    var data = ['2401', 'CNY Inventory # 1217                      ', 'CNY   Inventory   1217                                  ', '1', '1', '1', '9', '0', '0', '0', '1935', '1935', '', '1935, December 19', 'FIREHOUSE [SUBTITLE: PARK AVENUE AND EAST 135TH STREET.]', 'Gelatin silver print', 'Print Size: 7 3/8 x 9 1/2 in. (18.7 x 24.1 cm)', '', '', '', '', '', '', 'Printed on matte double weight paper. FAP-CNY Block stamp verso. FAP-CNY stamp verso. Image size: 7 3/8 x 9 1/2.', '', '', '', 'CNY Block Code I.D.2.', '', '', 'Changing New York [Manhattan]', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1', '1', '0', '0', 'Conversion', '2006-07-13 00:00:00.0', '0', '', '0', '3', '0', '', '', 'ABBOTT, BERENICE', '', '', '', '', '', '', '', '', '', '', 'CNY # 064', '', '', '', 'Unknown', '', '', '', '', '0.0000', '(BINARY DATA)', '0', '1991-08-20', '', '0', '', '', '', '', '', 'true']
+    var r = tmsUtils.mapObjectCsvToJson(data)
+    r.ObjectNumber.should.equal('CNY Inventory # 1217                      ')
+    r.DateBegin.should.equal('1935')
+    r.Title.should.equal('FIREHOUSE [SUBTITLE: PARK AVENUE AND EAST 135TH STREET.]')
   })
 })

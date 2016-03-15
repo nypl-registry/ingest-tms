@@ -6,9 +6,6 @@
   "scripts": {
     "test": "standard && mocha test"
   },
-  "standard": {
-    "ignore": "test/*"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nypl-registry/ingest-tms.git"
