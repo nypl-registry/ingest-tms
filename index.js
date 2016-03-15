@@ -55,12 +55,12 @@ function IngestTms () {
    */
   this.tmsObjectsIngest = require(`${__dirname}/lib/objects`).tmsObjectsIngest
 
-/**
- * Ingest the Archives components
- *
- * @param  {function} cb - Nothing returned
- */
-// this.ingestComponents = require(`${__dirname}/lib/components`)
+  /**
+   * Get the VIAF ID for a lot of the ULAN identifers we have
+   *
+   * @param  {function} cb - nothing returned
+   */
+  this.ulan2viaf = require(`${__dirname}/lib/ulan2viaf`).ulan2viaf
 }
 
 module.exports = exports = new IngestTms()

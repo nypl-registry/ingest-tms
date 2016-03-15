@@ -31,6 +31,7 @@
     "highland": "^2.7.1",
     "nypl-registry-utils-database": "nypl-registry/utils-database",
     "nypl-registry-utils-lexicon": "nypl-registry/utils-lexicon",
-    "nypl-registry-utils-normalize": "nypl-registry/utils-normalize"
+    "nypl-registry-utils-normalize": "nypl-registry/utils-normalize",
+    "request": "^2.69.0"
   }
 }

@@ -4,6 +4,7 @@
 var assert = require('assert') // eslint-disable-line
 var should = require('should') // eslint-disable-line
 var tmsUtils = require('../lib/utils.js')
+var ulan2viaf = require('../lib/ulan2viaf.js')
 
 describe('tmsUtils', function () {
   it('should parse tmsConsituentsLookup row results into mapped obj', function () {
@@ -38,5 +39,15 @@ describe('tmsUtils', function () {
     r.ObjectNumber.should.equal('CNY Inventory # 1217                      ')
     r.DateBegin.should.equal('1935')
     r.Title.should.equal('FIREHOUSE [SUBTITLE: PARK AVENUE AND EAST 135TH STREET.]')
+  })
+
+  it('should test the ulan2Viaf lookup via VIAF API', function (done) {
+    var data = {'_id': 'TEST', 'objectID': 66, 'title': 'The "paint pot," lower geyser basin [yellowstone park]. king coal of trinidad. bathing ghats at benares, india. cliff house and soda spring. falls of the abra, distant view. interior of the cave of el abra. interior of houseboat on the pie ho river, china', 'titleAlt': ['The \\Paint Pot,\\ Lower Geyser Basin [Yellowstone Park]. King Coal of Trinidad. Bathing ghats at Benares, India. Cliff House and Soda Spring. Falls of the Abra, distant view. Interior of the Cave of El Abra. Interior of houseboat on the Pie Ho River, China', 'Picture Collection Transfers (Accessioned)'], 'objectNumber': '106PH233', 'callNumber': false, 'acquisitionNumber': '106PH233', 'imageId': false, 'lcc': false, 'classmark': false, 'materialTypeId': 3, 'materialType': 'Photograph', 'agents': [{'id': 1686, 'nameAlpha': 'Jackson, William Henry', 'nameLast': 'Jackson', 'nameFirst': 'William Henry', 'nameDisplay': 'William Henry Jackson', 'dateStart': '1843', 'dateEnd': '1942', 'nationality': 'American', 'role': 'photographer', 'picid': '59610', 'ulan': '500030913', 'wikipedia': 'William_Henry_Jackson'}, {'id': 12044, 'nameAlpha': 'Jackson-Smith Photo Co.', 'nameLast': '', 'nameFirst': '', 'nameDisplay': 'Jackson-Smith Photo Co.', 'dateStart': '1890', 'dateEnd': '1899', 'nationality': 'American', 'role': 'photographer', 'picid': '20749'}], 'division': 'Photography Collection', 'dates': [{'field': 'inclusive', 'type': false, 'value': 1870, 'keyDate': false, 'point': 'start', 'encoding': false}, {'field': 'inclusive', 'type': false, 'value': 1896, 'keyDate': false, 'point': 'end', 'encoding': false}, {'field': 'free', 'type': false, 'value': '1870s-1896', 'keyDate': false, 'point': 'exact', 'encoding': false}], 'notes': [{'type': 'creditline', 'value': 'Transferred from the New York Public Library Picture Collection, 1990s.'}]}
+    ulan2viaf.askViaf(data, (err, update) => {
+      if (err) console.log(err)
+      update.agents[0].ulan.should.equal('500030913')
+      update.agents[0].viaf.should.equal('11396287')
+      done()
+    })
   })
 })
