@@ -1,0 +1,39 @@
+{
+  "name": "nypl-registry-ingest-tms",
+  "version": "1.0.0",
+  "description": "Converts TMS table exports to native registry JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && mocha test"
+  },
+  "standard": {
+    "ignore": "test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nypl-registry/ingest-tms.git"
+  },
+  "keywords": [
+    "nypl-registry"
+  ],
+  "author": "matt miller <thisismattmiller@gmail.com> (http://twitter.com/thisismmiller)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nypl-registry/ingest-tms/issues"
+  },
+  "homepage": "https://github.com/nypl-registry/ingest-tms",
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.2.2",
+    "standard": "^6.0.8"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "cli-color": "^1.1.0",
+    "csv-parse": "^1.0.2",
+    "highland": "^2.7.1",
+    "nypl-registry-utils-database": "nypl-registry/utils-database",
+    "nypl-registry-utils-lexicon": "nypl-registry/utils-lexicon",
+    "nypl-registry-utils-normalize": "nypl-registry/utils-normalize"
+  }
+}
