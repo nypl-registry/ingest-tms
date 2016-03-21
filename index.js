@@ -61,6 +61,13 @@ function IngestTms () {
    * @param  {function} cb - nothing returned
    */
   this.ulan2viaf = require(`${__dirname}/lib/ulan2viaf`).ulan2viaf
+
+  /**
+   * Deletes the potrait file from TMS data (it is in MMS better)
+   *
+   * @param  {function} cb - lookup table returned
+   */
+  this.dropPotraitCollection = require(`${__dirname}/lib/prune`).dropPotraitCollection
 }
 
 module.exports = exports = new IngestTms()
