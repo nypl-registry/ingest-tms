@@ -65,7 +65,7 @@ function IngestTms () {
   /**
    * Deletes the potrait file from TMS data (it is in MMS better)
    *
-   * @param  {function} cb - lookup table returned
+   * @param  {function} cb - nothing returned
    */
   this.dropPotraitCollection = require(`${__dirname}/lib/prune`).dropPotraitCollection
 }
